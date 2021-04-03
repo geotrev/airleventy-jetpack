@@ -2,10 +2,11 @@
 
 A moderate extension of the [Airleventy](https://github.com/geotrev/airleventy) static site template. Includes extended tooling:
 
-- stylelint
-- eslint
-- autoprefixing for css
-- bootstrap sass
+-   stylelint
+-   eslint
+-   autoprefixing for css
+-   bootstrap sass
+-   gzipped assets
 
 ## Increase your power levels
 
