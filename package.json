@@ -1,7 +1,7 @@
 {
-	"name": "airleventy",
+	"name": "airleventy-jetpack",
 	"version": "1.0.0",
-	"description": "11ty with minimal tooling extensions. Write with Sass & modern JS.",
+	"description": "airleventy template with plugins & bootstrap",
 	"private": false,
 	"main": "index.js",
 	"scripts": {
