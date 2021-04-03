@@ -5,6 +5,7 @@ A moderate extension of the [Airleventy](https://github.com/geotrev/airleventy) 
 - stylelint
 - eslint
 - autoprefixing for css
+- bootstrap sass
 
 ## Increase your power levels
 
