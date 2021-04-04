@@ -3,35 +3,35 @@
 @use "variables";
 
 body {
-	font-family: monospace, sans-serif;
-	background-color: var(--background-color);
+  font-family: monospace, sans-serif;
+  background-color: var(--background-color);
 }
 
 .content {
-	padding: 1.5rem;
-	max-width: var(--page-width);
-	margin: 0 auto;
+  padding: 1.5rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
 
 h1 {
-	padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 p,
 ul {
-	font-size: 1rem;
-	margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 ul {
-	padding-inline-start: 1rem;
+  padding-inline-start: 1rem;
 
-	li {
-		list-style: circle;
-	}
+  li {
+    list-style: circle;
+  }
 }
 
 .by {
-	font-size: 0.8rem;
-	color: var(--byline-color);
+  font-size: 0.8rem;
+  color: var(--byline-color);
 }

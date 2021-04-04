@@ -28,15 +28,15 @@ import commonjs from "@rollup/plugin-commonjs"
  */
 
 const terserPlugin = terser({
-	output: {
-		comments: (_, comment) => {
-			const { value, type } = comment
+  output: {
+    comments: (_, comment) => {
+      const { value, type } = comment
 
-			if (type === "comment2") {
-				return /@preserve|@license|@cc_on/i.test(value)
-			}
-		},
-	},
+      if (type === "comment2") {
+        return /@preserve|@license|@cc_on/i.test(value)
+      }
+    },
+  },
 })
 
 const absolutePath = (dirPath) => path.resolve(__dirname, dirPath)
@@ -44,50 +44,54 @@ const scriptFiles = glob.sync(absolutePath("assets/js/**/!(_)*.js"))
 const scriptsTarget = "assets/dist/js/"
 
 const inputs = scriptFiles.reduce((files, input) => {
-	const parts = input.split("assets/js/")
-	const fileKey = parts[parts.length - 1]
-	return { [fileKey]: absolutePath(input), ...files }
+  const parts = input.split("assets/js/")
+  const fileKey = parts[parts.length - 1]
+  return { [fileKey]: absolutePath(input), ...files }
 }, {})
 
 const inputPaths = Object.keys(inputs)
 
 const outputs = inputPaths.reduce((files, file) => {
-	const inputPath = inputs[file]
-	const parts = inputPath.split("/")
-	const pathIndex = parts.indexOf("js") + 1
-	const outputPath = parts.slice(pathIndex).join("/")
-	return { [file]: absolutePath(scriptsTarget + outputPath), ...files }
+  const inputPath = inputs[file]
+  const parts = inputPath.split("/")
+  const pathIndex = parts.indexOf("js") + 1
+  const outputPath = parts.slice(pathIndex).join("/")
+  return { [file]: absolutePath(scriptsTarget + outputPath), ...files }
 }, {})
 
 const bundles = inputPaths.map((key) => {
-	const prodEnv = process.env.BABEL_ENV === "production"
+  const prodEnv = process.env.BABEL_ENV === "production"
 
-	const plugins = [
-		nodeResolve(),
-		commonjs(),
-		babel({
-			babelHelpers: "bundled",
-			exclude: "node_modules/**",
-			comments: false,
-		}),
-	]
+  const plugins = [
+    nodeResolve(),
+    commonjs(),
+    babel({
+      babelHelpers: "bundled",
+      exclude: "node_modules/**",
+      comments: false,
+    }),
+  ]
 
-	let sourcemap = true
+  let sourcemap = true
 
-	if (prodEnv) {
-		plugins.push(terserPlugin)
-		sourcemap = false
-	}
+  if (prodEnv) {
+    plugins.push(terserPlugin)
+    sourcemap = false
+  }
 
-	return {
-		input: inputs[key],
-		output: {
-			file: outputs[key],
-			format: "iife",
-			sourcemap,
-		},
-		plugins,
-	}
+  return {
+    input: inputs[key],
+    output: {
+      file: outputs[key],
+      format: "iife",
+      sourcemap,
+    },
+    plugins,
+  }
 })
+
+if (!bundles.length) {
+  process.exit()
+}
 
 export default bundles
