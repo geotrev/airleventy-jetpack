@@ -7,7 +7,6 @@ A moderate extension of the [Airleventy](https://github.com/geotrev/airleventy) 
 -   enlist
 -   autoprefixing for css
 -   bootstrap sass
--   gzipped assets
 
 ## Increase your power levels
 
