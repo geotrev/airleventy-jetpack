@@ -4,7 +4,7 @@ A moderate extension of the [Airleventy](https://github.com/geotrev/airleventy) 
 
 -   prettier
 -   stylelint
--   enlist
+-   eslint
 -   autoprefixing for css
 -   bootstrap sass
 
